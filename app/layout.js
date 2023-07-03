@@ -1,5 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import AuthProvider from '@/copmponents/AuthProvider'
+import { ToastContainer } from 'react-toastify'
+import Navbar from '@/copmponents/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthProvider>
+          <ToastContainer/>
+
+        <Navbar/>
+        {children}
+        </AuthProvider>
+        </body>
     </html>
   )
 }
